@@ -9,11 +9,11 @@ type Company = (typeof data)[0];
 
 const configs = [
   {
-    Label: "Year",
+    label: "Year",
     render: (company: Company) => company.acceptedDate,
   },
   {
-    Label: "Cost of Revenue",
+    label: "Cost of Revenue",
     render: (company: Company) => company.costOfRevenue,
   },
 ];
@@ -34,12 +34,17 @@ const Table = (props: Props) => {
   });
   const renderedHeaders = configs.map((config: any) => {
     return (
-        <th className='p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider' key={config.label}>{config.label}</th>
+        <th
+        className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        key={config.label}
+      >
+        {config.label}
+      </th>
     )
   })
   return <div className='bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8'>
     <table>
-        <thead className="min-w-full divide-y divide-gray-200 m-5">{renderedHeaders}</thead>
+        <thead className="min-w-full divide-y divide=gray-200 m-5">{renderedHeaders}</thead>
         <tbody>{renderedRows}</tbody>
     </table>
   </div>
