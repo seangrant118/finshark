@@ -1,8 +1,18 @@
 import React from "react";
 import Table from "../../Components/Table/Table";
 import RatioList from "../../Components/RatioList/RatioList";
+import { CompanyKeyMetrics } from "../../company";
+import { testIncomeStatementData } from "../../Components/Table/testData";
 
 interface Props {}
+
+const tableConfig = [
+  {
+    label: "Market Cap",
+    render: (company: any) => company.marketCapTTM,
+    subTitle: "Total value of all a company's shares of stock",
+  },
+]
 
 const DesignPage = (props: Props) => {
   return (
@@ -12,7 +22,7 @@ const DesignPage = (props: Props) => {
         This is FinSharks design page. THis is where we will house various
         design aspects of the app
       </h2>
-      <RatioList />
+      <RatioList data={testIncomeStatementData} config={tableConfig}/>
       <Table />
     </>
   );
