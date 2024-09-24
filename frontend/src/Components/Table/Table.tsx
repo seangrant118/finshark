@@ -8,13 +8,13 @@ interface Props {
   data: any;
 }
 
-const Table = ({config}: Props) => {
+const Table = ({config, data}: Props) => {
   const renderedRows = data.map((company: any) => {
     return (
       <tr key={company.cik}>
         {config.map((val: any) => {
           return (
-            <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+            <td className="p-3 whitespace-nowrap text-sm font-normal text-gray-900">
               {val.render(company)}
             </td>
           );

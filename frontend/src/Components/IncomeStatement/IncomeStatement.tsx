@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { CompanyIncomeStatement } from "../../company";
 import { useOutletContext } from "react-router-dom";
 import { getIncomeStatement } from "../../api";
-import { config } from "dotenv";
 import Table from "../Table/Table";
 
 interface Props {}
