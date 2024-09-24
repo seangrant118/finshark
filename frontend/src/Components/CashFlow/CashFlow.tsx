@@ -3,6 +3,7 @@ import { CompanyCashFlow } from "../../company";
 import { useOutletContext } from "react-router-dom";
 import { getCashFlow } from "../../api";
 import Table from "../Table/Table";
+import Spinner from "../Spinner/Spinner";
 
 interface Props {}
 
@@ -57,9 +58,9 @@ const CashFlow = (props: Props) => {
   return (
     <>
       {cashFlowData ? (
-        <Table config={config} data={cashFlowData}/>
+        <Table config={config} data={cashFlowData} />
       ) : (
-        <h1>No Results</h1>
+        <Spinner />
       )}
     </>
   );
