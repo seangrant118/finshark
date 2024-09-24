@@ -1,5 +1,6 @@
 import React from "react";
 import { ClipLoader } from "react-spinners";
+import "./Spinner.css"
 
 interface Props {
   isLoading?: boolean;
@@ -20,3 +21,5 @@ const Spinner = ({ isLoading = true }: Props) => {
     </>
   );
 };
+
+export default Spinner;
