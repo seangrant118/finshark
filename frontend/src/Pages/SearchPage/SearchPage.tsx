@@ -7,10 +7,12 @@ import Search from "../../Components/Search/Search";
 import { PortfolioGet } from "../../Models/Portfolio";
 import { portfolioAddAPI, portfolioDeleteAPI, portfolioGetAPI } from "../../Services/PortfolioServices";
 import { toast } from "react-toastify";
+import { useAuth } from "../../Context/useAuth";
 
 interface Props {}
 
 const SearchPage = (props: Props) => {
+  const {user} = useAuth();
   const [search, setSearch] = useState<string>("");
   const [portfolioValues, setPortfolioValues] = useState<PortfolioGet[] | null>(
     []
@@ -24,9 +26,10 @@ const SearchPage = (props: Props) => {
 
   useEffect(() => {
     getPortfolio();
-  },[])
+  },[user])
 
   const getPortfolio = () => {
+    setPortfolioValues([]);
     portfolioGetAPI()
       .then((res) => {
         if (res?.data) {
@@ -72,6 +75,7 @@ const SearchPage = (props: Props) => {
   return (
     <div className="App">
       <Search
+        key={user?.userName}
         onSearchSubmit={onSearchSubmit}
         search={search}
         handleSearchChange={handleSearchChange}

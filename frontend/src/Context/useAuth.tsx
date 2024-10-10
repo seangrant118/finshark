@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { UserProfile } from "../Models/User"
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { loginAPI, registerAPI } from "../Services/AuthService";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -65,6 +65,7 @@ export const UserProvider = ({children} : Props) => {
                 localStorage.setItem("user", JSON.stringify(userObj))
                 setToken(res?.data.token)
                 setUser(userObj!)
+                axios.defaults.headers.common["Authorization"] = "Bearer " + res?.data.token;
                 toast.success("Login Successful!");
                 navigate("/search")
             }
@@ -80,7 +81,7 @@ export const UserProvider = ({children} : Props) => {
         localStorage.removeItem("user");
         setUser(null);
         setToken("");
-        navigate("/")
+        navigate("/");
     }
 
     return (
